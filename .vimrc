@@ -21,8 +21,12 @@ call dein#end()
 filetype plugin indent on
 
 
-"vimを立ち上げたときに,自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_enable_on_vim_startup=1         "vimを立ち上げたときに,自動的にvim-indent-guidesをオンにする
+let g:indent_guides_start_level=2                   "ガイドをスタートするインデントの量
+let g:indent_guides_auto_colors=0                   "自動カラーを無効
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#403D3D ctermbg=235   "奇数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#403D3D ctermbg=236   "偶数インデントのカラー
+let g:indent_guides_guide_size=1                    "ガイドの幅
 
 
 "** キーマッピング **
