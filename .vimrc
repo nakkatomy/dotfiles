@@ -12,6 +12,9 @@ call dein#add('Shougo/dein.vim')
 "Add or remove plugins here
 call dein#add('tomasr/molokai')
 call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/unite.vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('nathanaelkane/vim-indent-guides')
 
 call dein#end()
 
