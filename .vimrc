@@ -10,15 +10,23 @@ call dein#begin(expand('~/.vim/bundle'))
 call dein#add('Shougo/dein.vim')
 
 "Add or remove plugins here
-call dein#add('tomasr/molokai')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/unite.vim')
-call dein#add('scrooloose/nerdtree')
-call dein#add('nathanaelkane/vim-indent-guides')
+call dein#add('tomasr/molokai')                     "カラーテーマ
+call dein#add('Shougo/neocomplete.vim')             "入力補完
+call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
+call dein#add('scrooloose/nerdtree')                "ファイルをツリー表示
+call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
 
 call dein#end()
 
 filetype plugin indent on
+
+
+"vimを立ち上げたときに,自動的にvim-indent-guidesをオンにする
+let g:indent_guides_enable_on_vim_startup=1
+
+
+"** キーマッピング **
+nnoremap :tree :NERDTreeToggle
 
 
 
