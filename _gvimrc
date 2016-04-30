@@ -1,0 +1,6 @@
+"** Windowサイズ **
+"set lines=                "縦幅
+"set columns=             "横幅
+
+"** 画面表示設定 **
+"set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%  "可視化した空白文字の表示形式
