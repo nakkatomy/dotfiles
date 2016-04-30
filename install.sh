@@ -3,7 +3,7 @@
 for f in .??*
 do
     [ "$f" == ".git" ] && continue
-    [ "$f" == ".DS_Store"] && continue
+    [ "$f" == ".DS_Store" ] && continue
 
-    ln -sv "$f" "$HOME"/"$f"
+    ln -svf "$HOME"/dotfiles/"$f" "$HOME"/"$f"
 done
