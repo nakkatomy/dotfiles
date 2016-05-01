@@ -22,6 +22,9 @@ call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従
 call dein#add('tpope/vim-surround')                 "選択範囲を記号やタグで囲むことや外すことができる
 call dein#add('bronson/vim-trailing-whitespace')    "行末の不要なスペースを可視化
 call dein#add('scrooloose/syntastic')               "シンタックスチェック
+call dein#add('Shougo/neosnippet.vim')              "スニペット機能をvimに追加
+call dein#add('Shougo/neosnippet-snippets')         "neosnippets用スニペット集
+call dein#add('honza/vim-snippets')                 "neosnippet-snippetsに無いものを追加
 
 call dein#end()
 
@@ -37,7 +40,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#403D3D ctermbg=236   
 let g:indent_guides_guide_size=1                    "ガイドの幅
 
 
-"lightlineの設定
+"** lightlineの設定 **
 "
 "readonlyのアイコン変更オプション
 "\ 'component': {
@@ -96,7 +99,7 @@ function! LightLineMode()
 endfunction
 
 
-"保存すると同時にsyntasticを動かし,かつlight#updateを呼ぶ
+"** 保存すると同時にsyntasticを動かし,かつlight#updateを呼ぶ **
 let g:syntastic_mode_map = { 'mode': 'passive' }
 augroup AutoSyntastic
     autocmd!
@@ -110,7 +113,23 @@ endfunction
 
 
 "** キーマッピング **
-nnoremap :tree :NERDTreeToggle
+nnoremap :tree :NERDTreeTogglen key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 
 
