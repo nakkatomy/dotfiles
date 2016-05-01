@@ -21,10 +21,12 @@ call dein#add('thinca/vim-quickrun')                "さまざまなコマンド
 call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従ってコメント化,非コメント化
 call dein#add('tpope/vim-surround')                 "選択範囲を記号やタグで囲むことや外すことができる
 call dein#add('bronson/vim-trailing-whitespace')    "行末の不要なスペースを可視化
+call dein#add('scrooloose/syntastic')               "シンタックスチェック
 
 call dein#end()
 
 filetype plugin indent on
+
 
 
 let g:indent_guides_enable_on_vim_startup=1         "vimを立ち上げたときに,自動的にvim-indent-guidesをオンにする
@@ -33,6 +35,7 @@ let g:indent_guides_auto_colors=0                   "自動カラーを無効
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#403D3D ctermbg=235   "奇数インデントのカラー
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#403D3D ctermbg=236   "偶数インデントのカラー
 let g:indent_guides_guide_size=1                    "ガイドの幅
+
 
 "lightlineの設定
 "
@@ -49,15 +52,44 @@ let g:lightline = {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
     \ },
-    \ 'component': {
-    \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+    \ 'component_function': {
+    \   'modified': 'LightLineModified',
+    \   'fugitive': 'LightLineFugitive',
+    \   'fileformat': 'LightLineFileformat',
+    \   'filetype': 'LightLineFiletype',
+    \   'fileencoding': 'LightLineFileencoding',
+    \   'mode': 'LightLineMode',
     \ },
     \ 'component_visible_condition': {
     \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
     \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
     \ }
     \ }
+
+function! LightLineModified()
+    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineFugitive()
+    return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! LightLineFileformat()
+    return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+    return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
 
 
 "** キーマッピング **
