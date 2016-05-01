@@ -15,6 +15,7 @@ call dein#add('Shougo/neocomplete.vim')             "入力補完
 call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
 call dein#add('scrooloose/nerdtree')                "ファイルをツリー表示
 call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
+call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを実行
 
 call dein#end()
 
