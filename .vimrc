@@ -17,6 +17,7 @@ call dein#add('scrooloose/nerdtree')                "ファイルをツリー表
 call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
 call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを実行
 call dein#add('itchyny/lightline.vim')              "ステータスラインの表示内容を強化
+call dein#add('thinca/vim-quickrun')                "さまざまなコマンドを実行
 
 call dein#end()
 
