@@ -16,6 +16,7 @@ call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイ
 call dein#add('scrooloose/nerdtree')                "ファイルをツリー表示
 call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
 call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを実行
+call dein#add('itchyny/lightline.vim')              "ステータスラインの表示内容を強化
 
 call dein#end()
 
@@ -29,6 +30,31 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#403D3D ctermbg=235   
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#403D3D ctermbg=236   "偶数インデントのカラー
 let g:indent_guides_guide_size=1                    "ガイドの幅
 
+"lightlineの設定
+"
+"readonlyのアイコン変更オプション
+"\ 'component': {
+"\   'readonly': '%{&readonly?"":""}',
+"\ }
+"separatorの設定,
+"\ 'separator': { 'left': '', 'right': '' },
+"\ 'subseparator': { 'left': '', 'right': '' }
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component': {
+    \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+    \ },
+    \ 'component_visible_condition': {
+    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+    \ }
+    \ }
+
 
 "** キーマッピング **
 nnoremap :tree :NERDTreeToggle
@@ -38,7 +64,7 @@ nnoremap :tree :NERDTreeToggle
 "** 画面表示設定 **
 syntax on                       "ハイライト表示
 set title                       "ターミナルのタイトルをセットする
-set showmode                    "現在のモードを照会する
+set noshowmode                  "現在のモードを照会しない
 set number                      "行番号を表示する
 set laststatus=2                "ステータス行を常に表示
 set cmdheight=2                 "メッセージ表示欄を2行確保
@@ -61,6 +87,7 @@ set ambiwidth=double            "文脈によって解釈が異なる全角文�
 
 "** 文字コード設定 **
 set encoding=utf-8              "vim
+scriptencoding utf-8
 set fileencoding=utf-8          "保存するファイル
 
 "** カラースキーマ設定 **
