@@ -19,6 +19,8 @@ call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを
 call dein#add('itchyny/lightline.vim')              "ステータスラインの表示内容を強化
 call dein#add('thinca/vim-quickrun')                "さまざまなコマンドを実行
 call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従ってコメント化,非コメント化
+call dein#add('tpope/vim-surround')                 "選択範囲を記号やタグで囲むことや外すことができる
+call dein#add('bronson/vim-trailing-whitespace')    "行末の不要なスペースを可視化
 
 call dein#end()
 
