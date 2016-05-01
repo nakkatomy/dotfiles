@@ -50,7 +50,10 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+    \   'right': [ [ 'syntastic', 'lineinfo' ],
+    \              [ 'percent' ],
+    \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \ },
     \ 'component_function': {
     \   'modified': 'LightLineModified',
@@ -60,9 +63,11 @@ let g:lightline = {
     \   'fileencoding': 'LightLineFileencoding',
     \   'mode': 'LightLineMode',
     \ },
-    \ 'component_visible_condition': {
-    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+    \ 'component_expand': {
+    \   'syntastic': 'SyntasticStatuslineFlag'
+    \ },
+    \ 'component_type': {
+    \   'syntastic': 'error'
     \ }
     \ }
 
@@ -88,6 +93,18 @@ endfunction
 
 function! LightLineMode()
     return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+
+"保存すると同時にsyntasticを動かし,かつlight#updateを呼ぶ
+let g:syntastic_mode_map = { 'mode': 'passive' }
+augroup AutoSyntastic
+    autocmd!
+    autocmd BufWritePost *.c,*.cpp,*.cc,*.cs,*.java,*.py,*.rb,*.html,*.css,*.js call s:syntastic()
+augroup END
+function! s:syntastic()
+    SyntasticCheck
+    call lightline#update()
 endfunction
 
 
