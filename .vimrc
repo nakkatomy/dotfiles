@@ -27,6 +27,7 @@ call dein#add('honza/vim-snippets')                 "neosnippet-snippetsに無�
 call dein#add('sjl/gundo.vim')                      "Undo履歴を専用バッファに表示
 call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
 call dein#add('Shougo/vimshell.vim')                "vimをシェルとして使用.また,unite.vimの[操作]にvimshellで実行する機能を追加
+call dein#add('rking/ag.vim')                       "ag(the_silver_sercher)と連携. 高速にファイル検索可能
 
 call dein#end()
 
@@ -114,6 +115,7 @@ endfunction
 
 
 "** キーマッピング **
+let mapleader = "\<space>"          "LeaderをSpaceキーに設定
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :GundoToggle<CR>
 
