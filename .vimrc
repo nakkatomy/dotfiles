@@ -15,6 +15,8 @@ call dein#add('Shougo/neocomplete.vim')             "入力補完
 call dein#add('scrooloose/nerdtree')                "ファイルをツリー表示
 call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
 call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを実行
+call dein#add('gregsexton/gitv')                    "gitkコマンドのようなコミット履歴を専用バッファに表示
+call dein#add('cohama/agit.vim')                    "Gitの差分を表示
 call dein#add('itchyny/lightline.vim')              "ステータスラインの表示内容を強化
 call dein#add('thinca/vim-quickrun')                "さまざまなコマンドを実行
 call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従ってコメント化,非コメント化
@@ -26,17 +28,17 @@ call dein#add('Shougo/neosnippet-snippets')         "neosnippets用スニペッ�
 call dein#add('honza/vim-snippets')                 "neosnippet-snippetsに無いものを追加
 call dein#add('sjl/gundo.vim')                      "Undo履歴を専用バッファに表示
 call dein#add('taglist.vim')                        "ソースコードのアウトラインを表示
+call dein#add('cohama/lexima.vim')                  "autoclose
 call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
 call dein#add('Shougo/vimshell.vim')                "vimをシェルとして使用.また,unite.vimの[操作]にvimshellで実行する機能を追加
 call dein#add('rking/ag.vim')                       "ag(the_silver_sercher)と連携. 高速にファイル検索可能
-call dein#add('cohama/lexima.vim')                  "autoclose
-call dein#add('gregsexton/gitv')                    "gitkコマンドのようなコミット履歴を専用バッファに表示
-call dein#add('cohama/agit.vim')                    "Gitの差分を表示
 
 call dein#end()
 
 filetype plugin indent on
 
+
+"---------------------------------------------------------------------------------------------------
 
 
 "********** neocompleteの設定 **********
@@ -143,9 +145,28 @@ function! s:syntastic()
 endfunction
 
 
+"********** unite.vim grepにag(The silver Searcher)を使用 **********
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+endif
+
+
+
+"---------------------------------------------------------------------------------------------------
+
+
 
 "********** キーマッピング **********
-let mapleader = "\<space>"          "LeaderをSpaceキーに設定
+let mapleader = "\<space>"      "LeaderをSpaceキーに設定
+"command line windowを開く
+nnoremap : q:a
+nnoremap / q/a
+
+
+"***** プラグインのキーマッピング *****
+
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :GundoToggle<CR>
 nnoremap <F7> :TlistToggle<CR>
@@ -189,6 +210,8 @@ if has('conceal')
 endif
 
 
+
+"---------------------------------------------------------------------------------------------------
 
 
 
