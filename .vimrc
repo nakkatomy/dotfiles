@@ -1,4 +1,4 @@
-"** dein.vimの設定 **
+"********** dein.vimの設定 **********
 if &compatible
     set nocompatible            "Be iMproved
 endif
@@ -39,15 +39,41 @@ filetype plugin indent on
 
 
 
-let g:indent_guides_enable_on_vim_startup=1         "vimを立ち上げたときに,自動的にvim-indent-guidesをオンにする
-let g:indent_guides_start_level=2                   "ガイドをスタートするインデントの量
-let g:indent_guides_auto_colors=0                   "自動カラーを無効
+"********** neocompleteの設定 **********
+let g:neocomplete#enable_at_startup = 1             "起動時に有効化
+let g:neocomplete#enable_smart_case = 1             "大文字が入力されるまで大文字小文字の区別を無視
+let g:neocomplete#sources#syntax#min_keyword_length = 3  "シンタックスをキャッシュするときの最小文字長
+let g:neocomplete#auto_completion_start_length = 2  "補完を表示する最小文字数
+"let g:neocomplete#max_list =                       "ポップアップメニューで表示される候補の数
+"let g:neocomplete#max_keyword_width =              "width of a candidate displayed in a pop-up menu
+let g:neocomplete#enable_auto_close_preview = 0     "preview windowを閉じない
+AutoCmd InsertLeave * silent! pclose!
+
+"** Define dictionary **
+"let s:neoco_dicts_dir = $HOME . '/dicts'
+"if isdirectory(s:neoco_dicts_dir)
+"    let g:neocomplete#sources#dictionary#dictionaries = {
+"    \  'default': '',
+"    \  'ruby': s:neoco_dicts_dir . '/ruby.dict',
+"    \ }
+"endif
+
+"if !exists('g:neocomplete#delimiter_patterns')
+"    let g:neocomplete#delimiter_patterns = {}
+"endif
+"let g:neocomplete#delimiter_patterns.cpp = ['::']
+
+
+"********** vim-indent-guidesの設定 **********
+let g:indent_guides_enable_on_vim_startup = 1       "vimを立ち上げたときに,自動的にvim-indent-guidesをオンにする
+let g:indent_guides_start_level = 2                 "ガイドをスタートするインデントの量
+let g:indent_guides_auto_colors = 0                 "自動カラーを無効
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#403D3D ctermbg=235   "奇数インデントのカラー
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#403D3D ctermbg=236   "偶数インデントのカラー
-let g:indent_guides_guide_size=1                    "ガイドの幅
+let g:indent_guides_guide_size = 1                  "ガイドの幅
 
 
-"** lightlineの設定 **
+"********** lightlineの設定 **********
 "readonlyのアイコン変更オプション
 "\ 'component': {
 "\   'readonly': '%{&readonly?"":""}',
@@ -105,7 +131,7 @@ function! LightLineMode()
 endfunction
 
 
-"** 保存すると同時にsyntasticを動かし,かつlight#updateを呼ぶ **
+"***** 保存すると同時にsyntasticを動かし,かつlight#updateを呼ぶ *****
 let g:syntastic_mode_map = { 'mode': 'passive' }
 augroup AutoSyntastic
     autocmd!
@@ -118,13 +144,33 @@ endfunction
 
 
 
-"** キーマッピング **
+"********** キーマッピング **********
 let mapleader = "\<space>"          "LeaderをSpaceキーに設定
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :GundoToggle<CR>
 nnoremap <F7> :TlistToggle<CR>
 
-"neosnippetのキーマッピング
+"** neocompleteのキーマッピング **
+"Plugin key-mappings
+inoremap <expr><C-g>    neocomplete#undo_completion()
+inoremap <expr><C-l>    neocomplete#complete_common_string()
+"Recommended key-mappings.
+"<CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+"** neosnippetのキーマッピング **
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -146,7 +192,7 @@ endif
 
 
 
-"** 画面表示設定 **
+"********** 画面表示設定 **********
 syntax on                       "ハイライト表示
 set title                       "ターミナルのタイトルをセットする
 set noshowmode                  "現在のモードを照会しない
@@ -160,50 +206,50 @@ set list                        "不可視文字を表示
 set nowrap                      "折り返しをしない
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%  "可視化した空白文字の表示形式
 
-"** カーソル移動関連設定 **
+"********** カーソル移動関連設定 **********
 set whichwrap=b,s,h,l,<,>,[,]   "行頭行末の左右移動で行をまたぐ
 set mps+=<:>                    "<や>も括弧として認識
 set backspace=indent,eol,start  "バックスペースを空白,行末,行頭でも使えるようにする
 set scrolloff=16                "上下16行の視界を確保
 set sidescrolloff=20            "左右スクロール時の視界を確保
 
-"** 文字設定 **
+"********** 文字設定 **********
 set ambiwidth=double            "文脈によって解釈が異なる全角文字の幅を2に固定する
 
-"** 文字コード設定 **
+"********** 文字コード設定 **********
 set encoding=utf-8              "vim
 scriptencoding utf-8
 set fileencoding=utf-8          "保存するファイル
 
-"** カラースキーマ設定 **
+"********** カラースキーマ設定 **********
 set t_Co=256
 colorscheme molokai
 let g:molokai_origial=1
 
 "highlight CursorLine ctermbg=lightgray "カーソル行のハイライトの色を変更
 
-"** ファイル処理関連設定 **
+"********** ファイル処理関連設定 **********
 set confirm                     "未保存のファイルがあるときは終了前に保存確認
 set autoread                    "外部でファイルに変更がされた場合は読み直す
 set hidden                      "ファイルを保存していなくても、別のファイルを開けるようにする
 
-"** タブ/インデント設定 **
+"********** タブ/インデント設定 **********
 set tabstop=4                   "タブ幅をスペース4つ分にする
 set expandtab                   "tabを半角スペースで挿入する
 set shiftwidth=4                "vimが自動で生成するtab幅をスペース4つ分にする
 set smartindent                 "改行時などに自動でインデントを設定する
 
-"** 検索/置換設定 **
+"********** 検索/置換設定 **********
 set hlsearch                    "検索文字列をハイライトする
 set incsearch                   "インクリメンタルサーチを行う
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
     "Escの2回押しでハイライト消去
 
-"** その他 **
+"********** その他 **********
 set clipboard=unnamed,autoselect  "unnamed:ヤンクしたテキストそのままクリップボードにコピー
                                   "autoselect:vim上でハイライトして選択したテキストがクリップボードにコピー
 
-"** 各種ファイルの保存先指定 **
+"********** 各種ファイルの保存先指定 **********
 "set viminfo+=n "viminfoファイルの場所指定
 "set directory= "スワップファイルの作成ディレクトリ
 "set undodir= "undoファイルの作成ディレクトリ
