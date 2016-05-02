@@ -172,13 +172,14 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 nnoremap :: q:a
 nnoremap / q/a
 "ctags用の設定
-nnoremap <C-j> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
-nnoremap <C-l> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-l> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-j> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 "unite-tagsの設定
 autocmd BufEnter *
 \   if empty(&buftype)
 \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
 \|  endif
+
 
 "***** プラグインのキーマッピング *****
 
