@@ -277,6 +277,11 @@ set smartcase                   "大文字と小文字が混在した言葉で�
 set wrapscan                    "最後尾まで検索を終えたら次の検索で先頭に移動
 "set gdefault                   "置換の時gオプションをデフォルトで有効にする
 
+"********** 補完 **********
+set wildmenu                    "コマンドラインモードでTABキーによる補完を有効化
+set wildmode=list:longest,full  "複数マッチがある時は,全てのマッチを羅列し,共通する最長の文字列までが補完され,もう一度TABを押すと,完全に補完する
+"set history=1000               "コマンド・検索パターンの履歴数
+
 "********** 動作環境と統合関連の設定  **********
 set clipboard=unnamed,autoselect "unnamed:ヤンクしたテキストそのままクリップボードにコピー, autoselect:vim上でハイライトして選択したテキストがクリップボードにコピー
 set mouse=a                     "マウスの入力を受けつける
