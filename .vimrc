@@ -21,7 +21,7 @@ call dein#add('itchyny/lightline.vim')              "ステータスラインの
 call dein#add('thinca/vim-quickrun')                "さまざまなコマンドを実行
 call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従ってコメント化,非コメント化
 call dein#add('tpope/vim-surround')                 "選択範囲を記号やタグで囲むことや外すことができる
-call dein#add('bronson/vim-trailing-whitespace')    "行末の不要なスペースを可視化
+call dein#add('ntpeters/vim-better-whitespace')     "行末の不要なスペースを可視化
 call dein#add('scrooloose/syntastic')               "シンタックスチェック
 call dein#add('Shougo/neosnippet.vim')              "スニペット機能をvimに追加
 call dein#add('Shougo/neosnippet-snippets')         "neosnippets用スニペット集
@@ -244,11 +244,20 @@ nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]<CR> :<C-u>Unite file_rec:!<CR>
 
 "unite.vimを開いている間のキーマッピング
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
-    " ESCでuniteを終了
-    nmap <buffer> <ESC> <Plug>(unite_exit)
-endfunction"}}}
+"ウインドウを横に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+"ウインドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+"ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+"autocmd FileType unite call s:unite_my_settings()
+"function! s:unite_my_settings()"{{{
+"    " ESCでuniteを終了
+"    nmap <buffer> <ESC> <Plug>(unite_exit)
+"endfunction"}}}
 
 
 
