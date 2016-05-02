@@ -171,7 +171,14 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 "command line windowを開く
 nnoremap :: q:a
 nnoremap / q/a
-
+"ctags用の設定
+nnoremap <C-j> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-l> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+"unite-tagsの設定
+autocmd BufEnter *
+\   if empty(&buftype)
+\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
+\|  endif
 
 "***** プラグインのキーマッピング *****
 
@@ -182,7 +189,7 @@ nnoremap <Leader>l :TlistToggle<CR>
 "** neocompleteのキーマッピング **
 "Plugin key-mappings
 inoremap <expr><C-k>    neocomplete#undo_completion()
-inoremap <expr><C-l>    neocomplete#complete_common_string()
+inoremap <expr><C-m>    neocomplete#complete_common_string()
 "Recommended key-mappings.
 "<CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -200,9 +207,9 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 "** neosnippetのキーマッピング **
-imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-smap <C-j>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-j>     <Plug>(neosnippet_expand_target)
+imap <C-p>     <Plug>(neosnippet_expand_or_jump)
+smap <C-p>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-p>     <Plug>(neosnippet_expand_target)
 " SuperTab like snippets behavior.
 "imap <expr><TAB>
 " \ pumvisible() ? "\<C-n>" :
