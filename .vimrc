@@ -145,7 +145,11 @@ function! s:syntastic()
 endfunction
 
 
-"********** unite.vim grepにag(The silver Searcher)を使用 **********
+"********** unite.vim **********
+let g:unite_enable_start_insert = 1         "入力モードで開始する
+let g:unite_source_history_yank_enable = 1  "ヒストリー/ヤンク機能を有効化
+
+"***** unite.vim grepにag(The silver Searcher)を使用 *****
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
@@ -171,13 +175,13 @@ nnoremap / q/a
 
 "***** プラグインのキーマッピング *****
 
-nnoremap <F5> :NERDTreeToggle<CR>
-nnoremap <F6> :GundoToggle<CR>
-nnoremap <F7> :TlistToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>g :GundoToggle<CR>
+nnoremap <Leader>l :TlistToggle<CR>
 
 "** neocompleteのキーマッピング **
 "Plugin key-mappings
-inoremap <expr><C-g>    neocomplete#undo_completion()
+inoremap <expr><C-k>    neocomplete#undo_completion()
 inoremap <expr><C-l>    neocomplete#complete_common_string()
 "Recommended key-mappings.
 "<CR>: close popup and save indent.
@@ -196,10 +200,9 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 "** neosnippetのキーマッピング **
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
+imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+smap <C-j>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-j>     <Plug>(neosnippet_expand_target)
 " SuperTab like snippets behavior.
 "imap <expr><TAB>
 " \ pumvisible() ? "\<C-n>" :
@@ -207,11 +210,39 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+"** unite.vimのキーマッピング **
+"prefix keyの設定
+nmap <Space>t [unite]
+"カレントディレクトリを表示
+nnoremap <silent> [unite]c :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+"バッファと最近開いたファイル一覧を表示
+nnoremap <silent> [unite]f :<C-u>Unite buffer file_mru<CR>
+"最近開いたディレクトリを表示
+nnoremap <silent> [unite]d :<C-u>Unite directory_mru<CR>
+"バッファを表示
+nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+"レジストリを表示
+nnoremap <silent> [unite]r :<C-u>Unite register<CR>
+"タブを表示
+nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
+"ヒストリー/ヤンクを表示
+nnoremap <silent> [unite]h :<C-u>Unite history/yank<CR>
+"outline
+nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
+"file_rec:!
+nnoremap <silent> [unite]<CR> :<C-u>Unite file_rec:!<CR>
+
+"unite.vimを開いている間のキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"{{{
+    " ESCでuniteを終了
+    nmap <buffer> <ESC> <Plug>(unite_exit)
+endfunction"}}}
 
 
 
