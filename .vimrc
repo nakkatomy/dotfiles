@@ -160,8 +160,12 @@ endif
 
 "********** キーマッピング **********
 let mapleader = "\<space>"      "LeaderをSpaceキーに設定
+"Escの2回押しでハイライト消去
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
+"<ESC>でIMEを自動的にオフに
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 "command line windowを開く
-nnoremap : q:a
+nnoremap :: q:a
 nnoremap / q/a
 
 
@@ -224,7 +228,7 @@ set laststatus=2                "ステータス行を常に表示
 set cmdheight=2                 "メッセージ表示欄を2行確保
 set cursorline                  "カーソル行の背景色を変える
 set showmatch                   "対応する括弧を強調表示
-set helpheight=999              "ヘルプを画面いっぱいに書く
+"set helpheight=999              "ヘルプを画面いっぱいに書く
 set list                        "不可視文字を表示
 set nowrap                      "折り返しをしない
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%  "可視化した空白文字の表示形式
@@ -255,22 +259,28 @@ let g:molokai_origial=1
 set confirm                     "未保存のファイルがあるときは終了前に保存確認
 set autoread                    "外部でファイルに変更がされた場合は読み直す
 set hidden                      "ファイルを保存していなくても、別のファイルを開けるようにする
+"set nobackup                   "ファイル保存時にバックアップファイルを作らない
+"set noswapfile                 "ファイル編集中にスワップファイルを作らない
 
 "********** タブ/インデント設定 **********
 set tabstop=4                   "タブ幅をスペース4つ分にする
 set expandtab                   "tabを半角スペースで挿入する
 set shiftwidth=4                "vimが自動で生成するtab幅をスペース4つ分にする
 set smartindent                 "改行時などに自動でインデントを設定する
+"set softtabstop=2              "連続した空白に対してタブキーやバックスペースでカーソルが動く幅
 
 "********** 検索/置換設定 **********
 set hlsearch                    "検索文字列をハイライトする
 set incsearch                   "インクリメンタルサーチを行う
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
-    "Escの2回押しでハイライト消去
+set ignorecase                  "大文字と小文字を区別しない
+set smartcase                   "大文字と小文字が混在した言葉で検索を行った場合に限り,大文字と小文字を区別する
+set wrapscan                    "最後尾まで検索を終えたら次の検索で先頭に移動
+"set gdefault                   "置換の時gオプションをデフォルトで有効にする
 
-"********** その他 **********
-set clipboard=unnamed,autoselect  "unnamed:ヤンクしたテキストそのままクリップボードにコピー
-                                  "autoselect:vim上でハイライトして選択したテキストがクリップボードにコピー
+"********** 動作環境と統合関連の設定  **********
+set clipboard=unnamed,autoselect "unnamed:ヤンクしたテキストそのままクリップボードにコピー, autoselect:vim上でハイライトして選択したテキストがクリップボードにコピー
+set mouse=a                     "マウスの入力を受けつける
+set shellslash                  "Windowsでもパスの区切り文字を/にする
 
 "********** 各種ファイルの保存先指定 **********
 "set viminfo+=n "viminfoファイルの場所指定
