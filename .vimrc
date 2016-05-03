@@ -52,7 +52,7 @@ let g:neocomplete#auto_completion_start_length = 2  "補完を表示する最小
 "let g:neocomplete#max_list =                       "ポップアップメニューで表示される候補の数
 "let g:neocomplete#max_keyword_width =              "width of a candidate displayed in a pop-up menu
 let g:neocomplete#enable_auto_close_preview = 0     "preview windowを閉じない
-AutoCmd InsertLeave * silent! pclose!
+autocmd InsertLeave * silent! pclose!
 
 ""** Define dictionary **
 "let s:neoco_dicts_dir = $HOME . '/dicts'
