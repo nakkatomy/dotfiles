@@ -16,40 +16,43 @@ execute 'set runtimepath^=' . s:dein_repo_dir
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
-    ""プラグインリストを記述したTOMLファイル
-    "let s:toml      = '~/.dein.toml'
-    "let s:lazy_toml = '~/.dein_lazy.toml'
-    "
-    ""TOMLを読み込み,キャッシュしておく
-    "call dein#load_toml(s:toml,      {'lazy': 0})
-    "call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-    "Let dein manage dein
-    call dein#add('Shougo/dein.vim')
+    "プラグインリストを記述したTOMLファイル
+    let s:toml      = '~/.dein.toml'
+    let s:lazy_toml = '~/.dein_lazy.toml'
 
-    "Add or remove plugins here
-    call dein#add('tomasr/molokai')                     "カラーテーマ
-    call dein#add('Shougo/neocomplete.vim')             "入力補完
-    call dein#add('scrooloose/nerdtree')                "ファイルをツリー表示
-    call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
-    call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを実行
-    call dein#add('gregsexton/gitv')                    "gitkコマンドのようなコミット履歴を専用バッファに表示
-    call dein#add('cohama/agit.vim')                    "Gitの差分を表示
-    call dein#add('itchyny/lightline.vim')              "ステータスラインの表示内容を強化
-    call dein#add('thinca/vim-quickrun')                "さまざまなコマンドを実行
-    call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従ってコメント化,非コメント化
-    call dein#add('tpope/vim-surround')                 "選択範囲を記号やタグで囲むことや外すことができる
-    call dein#add('ntpeters/vim-better-whitespace')     "行末の不要なスペースを可視化
-    call dein#add('scrooloose/syntastic')               "シンタックスチェック
-    call dein#add('Shougo/neosnippet.vim')              "スニペット機能をvimに追加
-    call dein#add('Shougo/neosnippet-snippets')         "neosnippets用スニペット集
-    call dein#add('honza/vim-snippets')                 "neosnippet-snippetsに無いものを追加
-    call dein#add('sjl/gundo.vim')                      "Undo履歴を専用バッファに表示
-    call dein#add('taglist.vim')                        "ソースコードのアウトラインを表示
-    call dein#add('cohama/lexima.vim')                  "autoclose
-    call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
-    call dein#add('Shougo/vimshell.vim')                "vimをシェルとして使用.また,unite.vimの[操作]にvimshellで実行する機能を追加
-    call dein#add('rking/ag.vim')                       "ag(the_silver_sercher)と連携. 高速にファイル検索可能
+    "TOMLを読み込み,キャッシュしておく
+    call dein#load_toml(s:toml,      {'lazy': 0})
+    call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+
+    ""Let dein manage dein
+    "call dein#add('Shougo/dein.vim')
+
+    ""Add or remove plugins here
+    "call dein#add('tomasr/molokai')                     "カラースキームプラグイン
+    "call dein#add('Shougo/neocomplete.vim')             "入力補完
+    "call dein#add('scrooloose/nerdtree')                "ファイルをツリー表示
+    "call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
+    "call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを実行
+    "call dein#add('gregsexton/gitv')                    "gitkコマンドのようなコミット履歴を専用バッファに表示
+    "call dein#add('cohama/agit.vim')                    "Gitの差分を表示
+    "call dein#add('itchyny/lightline.vim')              "ステータスラインの表示内容を強化
+    "call dein#add('thinca/vim-quickrun')                "さまざまなコマンドを実行
+    "call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従ってコメント化,非コメント化
+    "call dein#add('tpope/vim-surround')                 "選択範囲を記号やタグで囲むことや外すことができる
+    "call dein#add('ntpeters/vim-better-whitespace')     "行末の不要なスペースを可視化
+    "call dein#add('scrooloose/syntastic')               "シンタックスチェック
+    "call dein#add('Shougo/neosnippet.vim')              "スニペット機能をvimに追加
+    "call dein#add('Shougo/neosnippet-snippets')         "neosnippets用スニペット集
+    "call dein#add('honza/vim-snippets')                 "neosnippet-snippetsに無いものを追加
+    "call dein#add('sjl/gundo.vim')                      "Undo履歴を専用バッファに表示
+    "call dein#add('taglist.vim')                        "ソースコードのアウトラインを表示
+    "call dein#add('cohama/lexima.vim')                  "autoclose
+    "call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
+    "call dein#add('Shougo/vimshell.vim')                "vimをシェルとして使用.また,unite.vimの[操作]にvimshellで実行する機能を追加
+    "call dein#add('rking/ag.vim')                       "ag(the_silver_sercher)と連携. 高速にファイル検索可能
+
 
     call dein#end()
     call dein#save_state()

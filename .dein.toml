@@ -1,0 +1,27 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'                    #プラグインマネージャー
+
+[[plugins]]
+repo = 'tomasr/molokai'                     #カラースキームプラグイン
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'    #インデントに色を付ける
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'              #ステータスラインの表示内容を強化
+
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'     #行末の不要なスペースを可視化
+
+[[plugins]]
+repo = 'scrooloose/syntastic'               #シンタックスチェック
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'         #neosnippets用スニペット集
+
+[[plugins]]
+repo = 'honza/vim-snippets'                 #neosnippet-snippetsに無いものを追加
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'                 #vimで非同期処理を実現
+build = 'make'

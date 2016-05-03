@@ -1,0 +1,60 @@
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'     #入力補完
+if = 'has("lua")'                   #luaが入っていれば読み込む
+on_i = 1                            #インサートモードに入ったら読み込む
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'        #ファイルをツリー表示
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'         #VimからGitコマンドを実行
+
+[[plugins]]
+repo = 'gregsexton/gitv'            #gitkコマンドのようなコミット履歴を専用バッファに表示
+depends = ['vim-fugitive']          #vim-fugitiveに依存
+
+[[plugins]]
+repo = 'cohama/agit.vim'            #Gitの差分を表示
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'        #さまざまなコマンドを実行
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'        #ファイルタイプに従ってコメント化,非コメント化
+
+[[plugins]]
+repo = 'tpope/vim-surround'         #選択範囲を記号やタグで囲むことや外すことができる
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'      #スニペット機能をvimに追加
+depends = ['neosnippet-snippets']   #neosnippet-snippetsに依存
+on_i = 1                            #インサートモードに入ったら読み込む
+on_ft = ['snippet']                 #指定したファイルタイプの時に読み込む
+
+[[plugins]]
+repo = 'sjl/gundo.vim'              #Undo履歴を専用バッファに表示
+if = 'has("python")'                #pythonが入っていれば読み込む
+
+[[plugins]]
+repo = 'taglist.vim'                #ソースコードのアウトラインを表示
+
+[[plugins]]
+repo = 'cohama/lexima.vim'          #autoclose
+on_i = 1                            #インサートモードに入ったら読み込む
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'          #file_mruを処理可能に
+on_path = '.*'                      #何かのファイルを開いた時に読み込む
+
+[[plugins]]
+repo = 'Shougo/unite.vim'           #任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
+depends = ['neomru.vim']            #neomru.vimに依存
+
+[[plugins]]
+repo = 'Shougo/vimshell.vim'        #vimをシェルとして使用.また,unite.vimの[操作]にvimshellで実行する機能を追加
+depends = ['vimproc.vim']           #vimprocに依存
+
+[[plugins]]
+repo = 'rking/ag.vim'               #ag(the_silver_searcher)と連携. 高速にファイル検索が可能
+on_source = ['unite.vim']           #unite.vimが読み込まれた後に読み込む
+
