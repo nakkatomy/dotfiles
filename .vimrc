@@ -2,38 +2,66 @@
 if &compatible
     set nocompatible            "Be iMproved
 endif
-set runtimepath+=~/.vim/bundle/dein.vim
 
-call dein#begin(expand('~/.vim/bundle'))
+let s:dein_dir = expand('~/.vim/bundle')            "プラグインがインストールされるディレクトリ
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'  "dein.vim本体
 
-"Let dein manage dein
-call dein#add('Shougo/dein.vim')
+"dein.vimがなければgithubからインストール
+if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
 
-"Add or remove plugins here
-call dein#add('tomasr/molokai')                     "カラーテーマ
-call dein#add('Shougo/neocomplete.vim')             "入力補完
-call dein#add('scrooloose/nerdtree')                "ファイルをツリー表示
-call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
-call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを実行
-call dein#add('gregsexton/gitv')                    "gitkコマンドのようなコミット履歴を専用バッファに表示
-call dein#add('cohama/agit.vim')                    "Gitの差分を表示
-call dein#add('itchyny/lightline.vim')              "ステータスラインの表示内容を強化
-call dein#add('thinca/vim-quickrun')                "さまざまなコマンドを実行
-call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従ってコメント化,非コメント化
-call dein#add('tpope/vim-surround')                 "選択範囲を記号やタグで囲むことや外すことができる
-call dein#add('ntpeters/vim-better-whitespace')     "行末の不要なスペースを可視化
-call dein#add('scrooloose/syntastic')               "シンタックスチェック
-call dein#add('Shougo/neosnippet.vim')              "スニペット機能をvimに追加
-call dein#add('Shougo/neosnippet-snippets')         "neosnippets用スニペット集
-call dein#add('honza/vim-snippets')                 "neosnippet-snippetsに無いものを追加
-call dein#add('sjl/gundo.vim')                      "Undo履歴を専用バッファに表示
-call dein#add('taglist.vim')                        "ソースコードのアウトラインを表示
-call dein#add('cohama/lexima.vim')                  "autoclose
-call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
-call dein#add('Shougo/vimshell.vim')                "vimをシェルとして使用.また,unite.vimの[操作]にvimshellで実行する機能を追加
-call dein#add('rking/ag.vim')                       "ag(the_silver_sercher)と連携. 高速にファイル検索可能
+"設定開始
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
 
-call dein#end()
+    ""プラグインリストを記述したTOMLファイル
+    "let s:toml      = '~/.dein.toml'
+    "let s:lazy_toml = '~/.dein_lazy.toml'
+    "
+    ""TOMLを読み込み,キャッシュしておく
+    "call dein#load_toml(s:toml,      {'lazy': 0})
+    "call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+    "Let dein manage dein
+    call dein#add('Shougo/dein.vim')
+
+    "Add or remove plugins here
+    call dein#add('tomasr/molokai')                     "カラーテーマ
+    call dein#add('Shougo/neocomplete.vim')             "入力補完
+    call dein#add('scrooloose/nerdtree')                "ファイルをツリー表示
+    call dein#add('nathanaelkane/vim-indent-guides')    "インデントに色を付ける
+    call dein#add('tpope/vim-fugitive')                 "VimからGitコマンドを実行
+    call dein#add('gregsexton/gitv')                    "gitkコマンドのようなコミット履歴を専用バッファに表示
+    call dein#add('cohama/agit.vim')                    "Gitの差分を表示
+    call dein#add('itchyny/lightline.vim')              "ステータスラインの表示内容を強化
+    call dein#add('thinca/vim-quickrun')                "さまざまなコマンドを実行
+    call dein#add('tomtom/tcomment_vim')                "ファイルタイプに従ってコメント化,非コメント化
+    call dein#add('tpope/vim-surround')                 "選択範囲を記号やタグで囲むことや外すことができる
+    call dein#add('ntpeters/vim-better-whitespace')     "行末の不要なスペースを可視化
+    call dein#add('scrooloose/syntastic')               "シンタックスチェック
+    call dein#add('Shougo/neosnippet.vim')              "スニペット機能をvimに追加
+    call dein#add('Shougo/neosnippet-snippets')         "neosnippets用スニペット集
+    call dein#add('honza/vim-snippets')                 "neosnippet-snippetsに無いものを追加
+    call dein#add('sjl/gundo.vim')                      "Undo履歴を専用バッファに表示
+    call dein#add('taglist.vim')                        "ソースコードのアウトラインを表示
+    call dein#add('cohama/lexima.vim')                  "autoclose
+    call dein#add('Shougo/unite.vim')                   "任意の[候補](ファイル名やバッファ名など)から[選択]を行い,[種類]に応じた[操作](開く,削除など)を実行. []はプラグインを用いて拡張
+    call dein#add('Shougo/vimshell.vim')                "vimをシェルとして使用.また,unite.vimの[操作]にvimshellで実行する機能を追加
+    call dein#add('rking/ag.vim')                       "ag(the_silver_sercher)と連携. 高速にファイル検索可能
+
+    call dein#end()
+    call dein#save_state()
+endif
+"プラグインの追加・削除やtomlファイルの設定を変更した後
+"適宜 call dein#update や call dein#clear_state を呼ばなければならない
+"キャッシュしなくてもよいならば load_state / save_state を呼ばないようにしなければならない
+
+""もし,未インストールのものがあればインストール
+"if dein#check_install()
+"   call dein#install()
+"endif
 
 filetype plugin indent on
 
@@ -51,7 +79,7 @@ let g:neocomplete#auto_completion_start_length = 2  "補完を表示する最小
 let g:neocomplete#enable_auto_close_preview = 0     "preview windowを閉じない
 AutoCmd InsertLeave * silent! pclose!
 
-"** Define dictionary **
+""** Define dictionary **
 "let s:neoco_dicts_dir = $HOME . '/dicts'
 "if isdirectory(s:neoco_dicts_dir)
 "    let g:neocomplete#sources#dictionary#dictionaries = {
@@ -76,11 +104,11 @@ let g:indent_guides_guide_size = 1                  "ガイドの幅
 
 
 "********** lightlineの設定 **********
-"readonlyのアイコン変更オプション
+""readonlyのアイコン変更オプション
 "\ 'component': {
 "\   'readonly': '%{&readonly?"":""}',
 "\ }
-"separatorの設定,
+""separatorの設定,
 "\ 'separator': { 'left': '', 'right': '' },
 "\ 'subseparator': { 'left': '', 'right': '' }
 let g:lightline = {
@@ -204,14 +232,14 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>
+"" Close popup by <Space>
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 "** neosnippetのキーマッピング **
 imap <C-p>     <Plug>(neosnippet_expand_or_jump)
 smap <C-p>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-p>     <Plug>(neosnippet_expand_target)
-" SuperTab like snippets behavior.
+"" SuperTab like snippets behavior.
 "imap <expr><TAB>
 " \ pumvisible() ? "\<C-n>" :
 " \ neosnippet#expandable_or_jumpable() ?
