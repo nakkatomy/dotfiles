@@ -7,3 +7,4 @@ do
 
     ln -svf "$HOME"/dotfiles/"$f" "$HOME"/"$f"
 done
+echo "Deploy dotfiles complete!"
