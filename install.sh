@@ -5,6 +5,6 @@ do
     [ "$f" == ".git" ] && continue
     [ "$f" == ".DS_Store" ] && continue
 
-    ln -svf "$HOME"/dotfiles/"$f" "$HOME"/"$f"
+    ln -svfn "$HOME"/dotfiles/"$f" "$HOME"/"$f"
 done
 echo "Deploy dotfiles complete!"
