@@ -3,7 +3,7 @@ if &compatible
     set nocompatible            "Be iMproved
 endif
 
-let s:dein_dir = expand('~/.vim/bundle')            "プラグインがインストールされるディレクトリ
+let s:dein_dir = expand('~/.vim/dein')            "プラグインがインストールされるディレクトリ
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'  "dein.vim本体
 
 "dein.vimがなければgithubからインストール
