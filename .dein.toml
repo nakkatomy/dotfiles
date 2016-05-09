@@ -3,6 +3,11 @@ repo = 'Shougo/dein.vim'                    #プラグインマネージャー
 
 [[plugins]]
 repo = 'tomasr/molokai'                     #カラースキームプラグイン
+#repo = 'altercation/vim-colors-solarized'
+#repo = 'nanotech/jellybeans.vim'
+#repo = 'w0ng/vim-hybrid'
+#repo = 'vim-scripts/Wombat'
+#repo = 'vim-scripts/twilight'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'    #インデントに色を付ける

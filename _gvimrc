@@ -10,7 +10,7 @@
 "colorscheme molokai
 "let g:molokai_origial=1
 
-""********** GVimメニューの文字化け防止 **********
+""********** Kaoriya-Vimのメニューの文字化け防止 **********
 "source $VIMRUNTIME/delmenu.vim
 "set langmenu=ja_jp.utf-8
 "source $VIMRUNTIME/menu.vim
