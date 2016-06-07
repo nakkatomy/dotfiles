@@ -20,9 +20,6 @@ repo = 'cohama/agit.vim'            #Gitの差分を表示
 repo = 'thinca/vim-quickrun'        #さまざまなコマンドを実行
 
 [[plugins]]
-repo = 'tomtom/tcomment_vim'        #ファイルタイプに従ってコメント化,非コメント化
-
-[[plugins]]
 repo = 'tpope/vim-surround'         #選択範囲を記号やタグで囲むことや外すことができる
 
 [[plugins]]

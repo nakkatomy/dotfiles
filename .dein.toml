@@ -30,3 +30,6 @@ repo = 'honza/vim-snippets'                 #neosnippet-snippetsに無いもの�
 [[plugins]]
 repo = 'Shougo/vimproc.vim'                 #vimで非同期処理を実現
 build = 'make'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'        #ファイルタイプに従ってコメント化,非コメント化
