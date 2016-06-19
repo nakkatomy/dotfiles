@@ -32,4 +32,4 @@ repo = 'Shougo/vimproc.vim'                 #vimで非同期処理を実現
 build = 'make'
 
 [[plugins]]
-repo = 'tomtom/tcomment_vim'        #ファイルタイプに従ってコメント化,非コメント化
+repo = 'tomtom/tcomment_vim'                #ファイルタイプに従ってコメント化,非コメント化

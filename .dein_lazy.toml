@@ -36,10 +36,6 @@ if = 'has("python")'                #pythonが入っていれば読み込む
 repo = 'taglist.vim'                #ソースコードのアウトラインを表示
 
 [[plugins]]
-repo = 'cohama/lexima.vim'          #autoclose
-on_i = 1                            #インサートモードに入ったら読み込む
-
-[[plugins]]
 repo = 'Shougo/neomru.vim'          #file_mruを処理可能に
 on_path = '.*'                      #何かのファイルを開いた時に読み込む
 
