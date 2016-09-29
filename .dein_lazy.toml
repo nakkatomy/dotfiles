@@ -22,11 +22,11 @@ repo = 'thinca/vim-quickrun'        #さまざまなコマンドを実行
 [[plugins]]
 repo = 'tpope/vim-surround'         #選択範囲を記号やタグで囲むことや外すことができる
 
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'      #スニペット機能をvimに追加
-depends = ['neosnippet-snippets']   #neosnippet-snippetsに依存
-on_i = 1                            #インサートモードに入ったら読み込む
-on_ft = ['snippet']                 #指定したファイルタイプの時に読み込む
+# [[plugins]]
+# repo = 'Shougo/neosnippet.vim'      #スニペット機能をvimに追加
+# depends = ['neosnippet-snippets']   #neosnippet-snippetsに依存
+# on_i = 1                            #インサートモードに入ったら読み込む
+# on_ft = ['snippet']                 #指定したファイルタイプの時に読み込む
 
 [[plugins]]
 repo = 'sjl/gundo.vim'              #Undo履歴を専用バッファに表示
