@@ -1,0 +1,3 @@
+# vi モードでコマンドライン編集する
+set editing-mode vi
+
