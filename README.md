@@ -1,4 +1,4 @@
-#dotfiles
+#Ubuntu dotfiles
 
 **Ubuntu用**
 
