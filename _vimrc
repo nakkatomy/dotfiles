@@ -378,7 +378,6 @@ set shellslash                  "Windowsでもパスの区切り文字を/にす
 
 "********** 各種ファイルの保存先指定 **********
 "set viminfo+=n "viminfoファイルの場所指定
-"set directory= "スワップファイルの作成ディレクトリ
-"set undodir= "undoファイルの作成ディレクトリ
-"set backupdir= "バックアップファイルの作成ディレクトリ
-
+set directory=~/vimfiles/swp    "スワップファイルの作成ディレクトリ
+set undodir=~/vimfiles/undo     "undoファイルの作成ディレクトリ
+set backupdir=~/vimfiles/backup "バックアップファイルの作成ディレクトリ
