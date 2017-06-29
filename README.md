@@ -1,8 +1,6 @@
-#Ubuntu dotfiles
+# Ubuntu dotfiles
 
 **Ubuntu用**
-
-自分用に設定したdotfileをまとめるためのレポジトリ
 
 ---
 
