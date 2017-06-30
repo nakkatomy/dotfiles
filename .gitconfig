@@ -1,7 +1,7 @@
 [user]
-	name = tgit1df
-	email = tgit1df@outlook.com
+    name = nakkat
+    email = nakkat@outlook.com
 [core]
-	editor = vim -c \"set fenc=utf-8\"
+    editor = vim -c \"set fenc=utf-8\"
 [color]
-	ui = auto
+    ui = auto
