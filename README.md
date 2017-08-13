@@ -3,9 +3,9 @@
 **dotfiles for Ubuntu**
 
 
-## Install
+## Installation
 `cd` into your local `dotfiles` repository and then:
 
 ```bash
-$ ./install.sh
+$ source install.sh
 ```
