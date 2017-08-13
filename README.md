@@ -1,11 +1,11 @@
-# Ubuntu dotfiles
+# dotfiles
 
-**Ubuntu用**
+**dotfiles for Ubuntu**
 
----
 
 ## Install
-**dotfilesディレクトリ上**で以下を実行
-```
+`cd` into your local `dotfiles` repository and then:
+
+```bash
 $ ./install.sh
 ```
