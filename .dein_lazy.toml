@@ -33,7 +33,7 @@ repo = 'sjl/gundo.vim'              #Undo履歴を専用バッファに表示
 if = 'has("python")'                #pythonが入っていれば読み込む
 
 [[plugins]]
-repo = 'taglist.vim'                #ソースコードのアウトラインを表示
+repo = 'vim-scripts/taglist.vim'    #ソースコードのアウトラインを表示
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'          #file_mruを処理可能に
