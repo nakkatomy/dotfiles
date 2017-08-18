@@ -1,3 +1,7 @@
-# vi モードでコマンドライン編集する
 set editing-mode vi
 
+set completion-ignore-case on
+
+set visible-stats on
+
+set bell-style none
