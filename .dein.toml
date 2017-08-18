@@ -3,11 +3,6 @@ repo = 'Shougo/dein.vim'                    #プラグインマネージャー
 
 [[plugins]]
 repo = 'tomasr/molokai'                     #カラースキームプラグイン
-#repo = 'altercation/vim-colors-solarized'
-#repo = 'nanotech/jellybeans.vim'
-#repo = 'w0ng/vim-hybrid'
-#repo = 'vim-scripts/Wombat'
-#repo = 'vim-scripts/twilight'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'    #インデントに色を付ける
@@ -28,7 +23,7 @@ repo = 'Shougo/neosnippet-snippets'         #neosnippets用スニペット集
 repo = 'honza/vim-snippets'                 #neosnippet-snippetsに無いものを追加
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'                 #vimで非同期処理を実現
+repo = 'Shougo/vimproc.vim'                 #vimで非同期処理
 build = 'make'
 
 [[plugins]]
