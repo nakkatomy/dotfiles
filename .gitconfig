@@ -1,9 +1,0 @@
-[user]
-    name = nakkatomy
-    email = nakkatomy@outlook.com
-[core]
-    excludesfile = ~/.gitignore
-    editor = vim -c \"set fenc=utf-8\"
-    autocrlf = input
-[color]
-    ui = auto
